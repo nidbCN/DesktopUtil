@@ -18,19 +18,40 @@
         Title="MainWindow" Width="360">
 
     <Grid>
-        <StackPanel>
-            <materialDesign:Card Padding="16" Margin="16">
-                <StackPanel>
-                    <TextBlock x:Name="clockTimeText" FontFamily="{StaticResource Cascadia}" 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <!--Datetime card-->
+        <materialDesign:Card Padding="16" Margin="16">
+            <StackPanel>
+                <TextBlock x:Name="clockTimeText" FontFamily="{StaticResource Cascadia}" 
                            Style="{DynamicResource MaterialDesignHeadline2TextBlock}"
                            Text="{Binding Time}" HorizontalAlignment="Center" />
-                    <Separator Style="{StaticResource MaterialDesignDarkSeparator}" />
-                    <TextBlock x:Name="clockDateText" FontFamily="{StaticResource Cascadia}"
+                <Separator Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock x:Name="clockDateText" FontFamily="{StaticResource Cascadia}"
                            Style="{DynamicResource MaterialDesignBody2TextBlock}"
                            Text="{Binding Date}" HorizontalAlignment="Right" />
-                </StackPanel>
+            </StackPanel>
 
-            </materialDesign:Card>
-        </StackPanel>
+        </materialDesign:Card>
+
+        <UniformGrid Rows="1" Grid.Row="1">
+            <!--Function expander-->
+            <Expander Margin="8" Header="快捷功能">
+                <StackPanel
+                    Orientation="Vertical"
+                    TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                    Margin="24,8,24,16">
+                    <ListBox>
+                        <TextBlock Text="Plain" />
+                        <TextBlock Text="Old" />
+                        <TextBlock Text="ListBox" />
+                        <TextBlock Text="Full of junk" />
+                    </ListBox>
+                </StackPanel>
+            </Expander>
+        </UniformGrid>
     </Grid>
 </Window>
