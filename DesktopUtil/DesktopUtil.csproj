@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\CascadiaMono-Regular.otf" />
+    <None Remove="Resources\Fonts\CascadiaMono.ttf" />
+    <None Remove="Resources\Fonts\GlowSansSC-Normal-Regular.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.3.0" />
     <PackageReference Include="ShowMeTheXAML.MSBuild" Version="2.0.0" />
   </ItemGroup>
@@ -17,7 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Fonts\" />
+    <Resource Include="Resources\Fonts\CascadiaMono.ttf" />
+    <Resource Include="Resources\Fonts\GlowSansSC-Normal-Regular.otf" />
   </ItemGroup>
 
 </Project>

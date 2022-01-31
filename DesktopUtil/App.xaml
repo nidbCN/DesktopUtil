@@ -9,11 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-
-                <!-- 引入字体 -->
-                <ResourceDictionary>
-                    <FontFamily x:Key="Cascadia">/Presentation/Resources/Fonts/#CascadiaMono</FontFamily>
-                </ResourceDictionary>
+                <ResourceDictionary Source="/Resources/Fonts/Fonts.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
