@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:DesktopUtil"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:models="clr-namespace:DesktopUtil.Core.Models;assembly=DesktopUtil.Core" 
+        d:DataContext="{d:DesignInstance Type=models:ClockModel}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -13,11 +15,21 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="240" Width="320">
+
     <Grid>
         <StackPanel>
-            <materialDesign:Card Padding="32" Margin="16">
-                <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}">My First Material Design App</TextBlock>
+            <materialDesign:Card Padding="16" Margin="16">
+                <StackPanel>
+                    <TextBlock x:Name="clockTimeText" FontFamily="{StaticResource Cascadia}" 
+                           Style="{DynamicResource MaterialDesignHeadline2TextBlock}"
+                           Text="{Binding Time}" HorizontalAlignment="Center" />
+                    <Separator Style="{StaticResource MaterialDesignDarkSeparator}" />
+                    <TextBlock x:Name="clockDateText" FontFamily="{StaticResource Cascadia}"
+                           Style="{DynamicResource MaterialDesignBody2TextBlock}"
+                           Text="{Binding Date}" HorizontalAlignment="Right" />
+                </StackPanel>
+
             </materialDesign:Card>
         </StackPanel>
     </Grid>
