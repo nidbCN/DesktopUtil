@@ -15,43 +15,58 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Width="360">
+        Title="MainWindow" Width="360" Height="720">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="180"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        
-        <!--Datetime card-->
-        <materialDesign:Card Padding="16" Margin="16">
-            <StackPanel>
-                <TextBlock x:Name="clockTimeText" FontFamily="{StaticResource Cascadia}" 
+        <StackPanel>
+            <!--Clock-->
+            <GroupBox
+                Header="Clock" Height="172"
+                Style="{DynamicResource MaterialDesignCardGroupBox}"
+                Margin="16">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Clock" Height="24" Width="24" VerticalAlignment="Center" />
+                            <TextBlock Margin="8,0,0,0" VerticalAlignment="Center"
+                                       Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                       Text="日期时间" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+                <StackPanel>
+                    <TextBlock x:Name="clockTimeText" FontFamily="{StaticResource Cascadia}" 
                            Style="{DynamicResource MaterialDesignHeadline2TextBlock}"
                            Text="{Binding Time}" HorizontalAlignment="Center" />
-                <Separator Style="{StaticResource MaterialDesignDarkSeparator}" />
-                <TextBlock x:Name="clockDateText" FontFamily="{StaticResource Cascadia}"
+                    <Separator Style="{StaticResource MaterialDesignDarkSeparator}" />
+                    <TextBlock x:Name="clockDateText" FontFamily="{StaticResource Cascadia}"
                            Style="{DynamicResource MaterialDesignBody2TextBlock}"
                            Text="{Binding Date}" HorizontalAlignment="Right" />
-            </StackPanel>
-
-        </materialDesign:Card>
-
-        <UniformGrid Rows="1" Grid.Row="1">
-            <!--Function expander-->
-            <Expander Margin="8" Header="快捷功能">
-                <StackPanel
-                    Orientation="Vertical"
-                    TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
-                    Margin="24,8,24,16">
-                    <ListBox>
-                        <TextBlock Text="Plain" />
-                        <TextBlock Text="Old" />
-                        <TextBlock Text="ListBox" />
-                        <TextBlock Text="Full of junk" />
-                    </ListBox>
                 </StackPanel>
-            </Expander>
-        </UniformGrid>
+            </GroupBox>
+
+            <!--Function expander-->
+            <GroupBox Header="Card Group Box" Margin="16"
+                      Style="{DynamicResource MaterialDesignCardGroupBox}">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="RocketLaunch" Height="24" Width="24" VerticalAlignment="Center" />
+                            <TextBlock Margin="8,0,0,0" VerticalAlignment="Center"
+                                       Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                       Text="快捷功能" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+                <ListBox>
+                    <TextBlock Text="Plain" />
+                    <TextBlock Text="Old" />
+                    <TextBlock Text="ListBox" />
+                    <TextBlock Text="Full of junk" />
+                </ListBox>
+            </GroupBox>
+
+
+        </StackPanel>
     </Grid>
 </Window>
