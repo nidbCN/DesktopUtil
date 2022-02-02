@@ -38,12 +38,24 @@ namespace DesktopUtil.Core
                 var optionsJson = File.ReadAllText(path);
                 options = JsonSerializer.Deserialize<Options>(optionsJson);
             }
-            catch 
+            catch
             {
                 return false;
             }
 
             return true;
+        }
+
+        public static void Save(Options options)
+        {
+            if (options is null)
+                throw new ArgumentNullException(nameof(options));
+
+            var path = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                FILE_PATH);
+            var optionsJson = JsonSerializer.Serialize(options);
+            File.WriteAllText(path, optionsJson);
         }
     }
 }
