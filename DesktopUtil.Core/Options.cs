@@ -8,7 +8,7 @@ namespace DesktopUtil.Core
 
         public IList<QuickFunction> Functions { get; set; } = new List<QuickFunction>();
 
-        public static Options Read()
+        public static Options? Read()
         {
             var path = Path.Combine(
                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
@@ -16,9 +16,7 @@ namespace DesktopUtil.Core
 
             var optionsJson = File.ReadAllText(path);
 
-            var options = JsonSerializer.Deserialize<Options>(optionsJson);
-
-            return options ?? new Options();
+            return JsonSerializer.Deserialize<Options>(optionsJson);
         }
 
         public static bool TryRead(out Options? options)

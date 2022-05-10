@@ -1,41 +1,45 @@
 ﻿using System.Diagnostics;
 
-namespace DesktopUtil.Core
+namespace DesktopUtil.Core;
+
+public class QuickFunction
 {
-    public class QuickFunction
+#nullable disable
+    public QuickFunction()
     {
-        public QuickFunction(string displayName, string command, string? icon = null, string? workDir = null)
+    }
+#nullable restore
+    public QuickFunction(string displayName, string command, string? icon = null, string? workDir = null)
+    {
+        DisplayName = displayName;
+        Command = command;
+
+        if (icon != null)
+            IconName = icon;
+        if (workDir != null)
+            WorkingDirectory = workDir;
+
+    }
+
+    public string DisplayName { get; set; }
+
+    public string Command { get; set; }
+
+    public string IconName { get; set; } = "mdi-launch";
+
+    public string WorkingDirectory { get; set; }
+
+    public async Task Execute()
+    {
+        var process = new Process()
         {
-            DisplayName = displayName;
-            Command = command;
-
-            if (icon != null)
-                IconName = icon;
-            if (workDir != null)
-                WorkingDirectory = workDir;
-
-        }
-
-        public string DisplayName { get; }
-
-        public string Command { get; }
-
-        public string IconName { get; } = "mdi-launch";
-
-        public string WorkingDirectory { get; } = "scripts";
-
-        public static async void Execute(QuickFunction function)
-        {
-            var process = new Process()
+            StartInfo = new(Command)
             {
-                StartInfo = new ProcessStartInfo(function.Command)
-                {
-                    WorkingDirectory = function.WorkingDirectory,
-                }
-            };
+                //WorkingDirectory = WorkingDirectory,
+            }
+        };
 
-            process.Start();
-            await process.WaitForExitAsync();
-        }
+        process.Start();
+        await process.WaitForExitAsync();
     }
 }
