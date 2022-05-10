@@ -3,11 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DesktopUtil"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:models="clr-namespace:DesktopUtil.Core.Models;assembly=DesktopUtil.Core" 
-        d:DataContext="{d:DesignInstance Type=models:ClockModel}"
+        xmlns:models="clr-namespace:DesktopUtil.Models"
+        d:DataContext="{d:DesignInstance Type=models:MainWindowContext}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -35,13 +34,13 @@
                     </DataTemplate>
                 </GroupBox.HeaderTemplate>
                 <StackPanel>
-                    <TextBlock x:Name="clockTimeText" FontFamily="{StaticResource Cascadia}" 
+                    <TextBlock x:Name="ClockTimeText" FontFamily="{StaticResource Cascadia}" 
                            Style="{DynamicResource MaterialDesignHeadline2TextBlock}"
-                           Text="{Binding Time}" HorizontalAlignment="Center" />
+                           Text="{Binding Path=Clock.Time}" HorizontalAlignment="Center" />
                     <Separator Style="{StaticResource MaterialDesignDarkSeparator}" />
-                    <TextBlock x:Name="clockDateText" FontFamily="{StaticResource Cascadia}"
+                    <TextBlock x:Name="ClockDateText" FontFamily="{StaticResource Cascadia}"
                            Style="{DynamicResource MaterialDesignBody2TextBlock}"
-                           Text="{Binding Date}" HorizontalAlignment="Right" />
+                           Text="{Binding Path=Clock.Date}" HorizontalAlignment="Right" />
                 </StackPanel>
             </GroupBox>
 
@@ -58,15 +57,18 @@
                         </StackPanel>
                     </DataTemplate>
                 </GroupBox.HeaderTemplate>
-                <ListBox>
-                    <TextBlock Text="Plain" />
-                    <TextBlock Text="Old" />
-                    <TextBlock Text="ListBox" />
-                    <TextBlock Text="Full of junk" />
+                <ListBox ItemsSource="{Binding Functions}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DisplayName}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" ></TextBlock>
+                            <!--<Button
+                                Style="{StaticResource MaterialDesignPaperButton}"
+                                ToolTip="Resource name: MaterialDesignPaperButton"
+                                Content="{Binding DisplayName}" Click="Button_Click"/>-->
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
             </GroupBox>
-
-
         </StackPanel>
     </Grid>
 </Window>
