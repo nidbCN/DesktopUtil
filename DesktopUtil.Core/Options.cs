@@ -4,7 +4,7 @@ namespace DesktopUtil.Core
 {
     public class Options
     {
-        private const string FILE_PATH = "DesktopUtil/AppSettings.json";
+        private const string FilePath = "DesktopUtil/AppSettings.json";
 
         public IList<QuickFunction> Functions { get; set; } = new List<QuickFunction>();
 
@@ -12,7 +12,7 @@ namespace DesktopUtil.Core
         {
             var path = Path.Combine(
                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-               FILE_PATH);
+               FilePath);
 
             var optionsJson = File.ReadAllText(path);
 
@@ -25,7 +25,7 @@ namespace DesktopUtil.Core
 
             var path = Path.Combine(
                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-               FILE_PATH);
+               FilePath);
 
             // Validate file path
             if (!File.Exists(path))
@@ -51,7 +51,7 @@ namespace DesktopUtil.Core
 
             var path = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                FILE_PATH);
+                FilePath);
             var optionsJson = JsonSerializer.Serialize(options);
             File.WriteAllText(path, optionsJson);
         }

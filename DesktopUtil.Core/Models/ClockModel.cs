@@ -23,24 +23,24 @@ public class ClockModel : INotifyPropertyChanged
         Date = dateTime.ToLongDateString();
     }
 
-    private string time;
+    private string _time;
     public string Time
     {
-        get => time;
+        get => _time;
         private set
         {
-            time = value;
+            _time = value;
             NotifyPropertyChanged(nameof(Time));
         }
     }
 
-    private string date;
+    private string _date;
     public string Date
     {
-        get => date;
+        get => _date;
         private set
         {
-            date = value;
+            _date = value;
             NotifyPropertyChanged(nameof(Date));
         }
     }
